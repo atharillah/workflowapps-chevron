@@ -1,0 +1,31 @@
+﻿@{
+    Layout = Layout = "~/Views/Shared/_WMLayout.cshtml";
+}
+@model  WorkFlowAppsChevron.Controllers.WorkflowManagerController
+<body id=myBody onload="init()">
+    <div class="contentWork">
+        <!-- The Modal -->
+        <div id="sample">
+            <label class="wfHeader">Workflow Application</label>
+            <img style="margin-left: 33%; max-height: 5; max-width: 5%;margin-bottom: -18px; margin-top:14px;" src="../../Resources/Images/LogoChevron.png" />
+            <div class="containerLabel">
+                <label id="wfLabel" class="wfLabel">  @ViewData["Title"]     </label>
+            </div>
+
+            <button class="button3" onclick="myDiagram.commandHandler.undo()">Undo</button>
+            <button class="button3" onclick="myDiagram.commandHandler.redo()">Redo</button>
+
+            <div id="myBox">
+                <div id="myDiagramDiv"></div>
+            </div>
+
+            <button class="buttonSave button2Save" onclick="save()">
+                <font class="myFont">Start Workflow</font>
+            </button>
+
+            <textarea id="mySavedModel" style="display:none" ;>
+                @ViewData["coba"]
+            </textarea>
+        </div>
+    </div>
+</body>

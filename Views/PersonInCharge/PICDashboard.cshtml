@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Shared/_PICLayout.cshtml";
+}
+<body id=myBody>
+    <label class="wfHeader">To Do List</label>
+    <img style="margin-left: 43%; max-height: 5; max-width: 5%;margin-bottom: -18px; margin-top:14px;" src="../../Resources/Images/LogoChevron.png" />
+    <div id="contentWork">
+        @(Html.Kendo().Grid<WorkFlowAppsChevron.Models.NodeDataArray_Table>()
+                                                         .Name("grid")
+                                                         .Columns(columns =>
+                                                         {
+                                                             columns.Bound(p => p.workflowName).Width(100).Title("Workflow Name");
+                                                             columns.Bound(p => p.processName).Width(100).Title("Process Name");
+                                                             columns.Bound(p => p.startProcess).Width(50).Title("Start Time");
+                                                             columns.Bound(p => p.cycleProcess).Width(50).Title("Cycle Time");
+                                                             columns.Command(command => command.Custom("Done").Click("changeStatus")).Width(40);
+                                                         })
+                                                         .Selectable()
+                                                         .Pageable()
+                                                         .Sortable()
+                                                         .Scrollable()
+                                                         .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+                                                         .HtmlAttributes(new
+                                                         {
+                                                             style
+                                                = "height:515px; width:100%;  margin-left:4px; font-size:14px;"
+                                                         })
+                                                         .DataSource(dataSource => dataSource
+                                                             .Ajax()
+                                                             .Model(model => model.Id(p => p.id))
+                                                             .PageSize(20)
+                                                             .ServerOperation(true)
+                                                             .Read(read => read.Action("Workflow_Data", "PersonInCharge"))
+                                                          )
+        )
+        <script type="text/javascript">
+            function changeStatus() {
+                var grid = $("#grid").data("kendoGrid");
+                var selectedRow = grid.select();
+                var selectedDataItem = grid.dataItem(selectedRow).id;
+                var contentUrl = '@Url.Action("Complete", "PersonInCharge")?id=' + selectedDataItem;
+                window.location = contentUrl;
+            }
+        </script>
+    </div>
+</body>

@@ -1,0 +1,34 @@
+﻿@{
+    Layout = Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<body id=myBody>
+    <label class="wfHeader"> User List</label>
+    <img class="chevronLogo3" src="../../Resources/Images/LogoChevron.png" />
+    <div id="contentWork">
+        @(Html.Kendo().Grid<WorkFlowAppsChevron.Models.User_Table>()
+                                                .Name("grid")
+                                                .Columns(columns =>
+                                                {
+                                                    columns.Bound(p => p.user_id).Width(100).Title("User ID");
+                                                    columns.Bound(p => p.email).Width(225).Title("Email");
+                                                    columns.Bound(p => p.full_name).Width(255).Filterable(ftb => ftb.Cell(cell => cell.Operator("contains").SuggestionOperator(FilterType.Contains))).Title("Full Name");
+                                                    columns.Bound(p => p.role).Width(125).Title("Role");
+                                                })
+                                                .Pageable()
+                                                .Sortable()
+                                                .Scrollable()
+                                                .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+                                                .HtmlAttributes(new
+                                                {
+                                                    style
+                                                = "height:515px; width:100%;  margin-left:4px; font-size:14px;"
+                                                })
+                                                .DataSource(dataSource => dataSource
+                                                    .Ajax()
+                                                    .PageSize(15)
+                                                    .ServerOperation(true)
+                                                    .Read(read => read.Action("User_Data", "Admin"))
+                                                 )
+        )
+    </div>
+</body>

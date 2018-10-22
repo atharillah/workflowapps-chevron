@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DB_WorkflowModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LinkDataArray_Table">
+          <Key>
+            <PropertyRef Name="id_link" />
+          </Key>
+          <Property Name="id_link" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="workflowName" Type="varchar(max)" />
+          <Property Name="from" Type="int" />
+          <Property Name="to" Type="int" />
+          <Property Name="fromPort" Type="varchar(max)" />
+          <Property Name="toPort" Type="varchar(max)" />
+          <Property Name="points" Type="varchar(max)" />
+          <Property Name="wm" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="NodeDataArray_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="processName" Type="varchar(max)" />
+          <Property Name="subjectProcess" Type="varchar(max)" />
+          <Property Name="statusNode" Type="varchar(max)" />
+          <Property Name="workflowName" Type="varchar(max)" />
+          <Property Name="loc" Type="varchar(max)" />
+          <Property Name="pic" Type="varchar(max)" />
+          <Property Name="startProcess" Type="varchar(max)" />
+          <Property Name="dueProcess" Type="varchar(max)" />
+          <Property Name="cycleProcess" Type="varchar(max)" />
+          <Property Name="comment" Type="varchar(max)" />
+          <Property Name="key" Type="int" />
+          <Property Name="wm" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="User_Table">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="full_name" Type="varchar" MaxLength="50" />
+          <Property Name="role" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Workflow_Table">
+          <Key>
+            <PropertyRef Name="workflow_id" />
+          </Key>
+          <Property Name="workflow_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="workflow_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="workflow_subject" Type="varchar" MaxLength="50" />
+          <Property Name="workflow_pic" Type="varchar" MaxLength="50" />
+          <Property Name="workflow_wm" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="DB_WorkflowModelStoreContainer">
+          <EntitySet Name="LinkDataArray_Table" EntityType="Self.LinkDataArray_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NodeDataArray_Table" EntityType="Self.NodeDataArray_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_Table" EntityType="Self.User_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Workflow_Table" EntityType="Self.Workflow_Table" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_WorkflowModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LinkDataArray_Table">
+          <Key>
+            <PropertyRef Name="id_link" />
+          </Key>
+          <Property Name="id_link" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="workflowName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="from" Type="Int32" />
+          <Property Name="to" Type="Int32" />
+          <Property Name="fromPort" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="toPort" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="points" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="wm" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NodeDataArray_Table">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="processName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subjectProcess" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="statusNode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="workflowName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="loc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="startProcess" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dueProcess" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="cycleProcess" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="key" Type="Int32" />
+          <Property Name="wm" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User_Table">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="full_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Workflow_Table">
+          <Key>
+            <PropertyRef Name="workflow_id" />
+          </Key>
+          <Property Name="workflow_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="workflow_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="workflow_subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="workflow_pic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="workflow_wm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="DB_WorkflowEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LinkDataArray_Table" EntityType="Self.LinkDataArray_Table" />
+          <EntitySet Name="NodeDataArray_Table" EntityType="Self.NodeDataArray_Table" />
+          <EntitySet Name="User_Table" EntityType="Self.User_Table" />
+          <EntitySet Name="Workflow_Table" EntityType="Self.Workflow_Table" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_WorkflowModelStoreContainer" CdmEntityContainer="DB_WorkflowEntities">
+          <EntitySetMapping Name="LinkDataArray_Table">
+            <EntityTypeMapping TypeName="DB_WorkflowModel.LinkDataArray_Table">
+              <MappingFragment StoreEntitySet="LinkDataArray_Table">
+                <ScalarProperty Name="id_link" ColumnName="id_link" />
+                <ScalarProperty Name="workflowName" ColumnName="workflowName" />
+                <ScalarProperty Name="from" ColumnName="from" />
+                <ScalarProperty Name="to" ColumnName="to" />
+                <ScalarProperty Name="fromPort" ColumnName="fromPort" />
+                <ScalarProperty Name="toPort" ColumnName="toPort" />
+                <ScalarProperty Name="points" ColumnName="points" />
+                <ScalarProperty Name="wm" ColumnName="wm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NodeDataArray_Table">
+            <EntityTypeMapping TypeName="DB_WorkflowModel.NodeDataArray_Table">
+              <MappingFragment StoreEntitySet="NodeDataArray_Table">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="processName" ColumnName="processName" />
+                <ScalarProperty Name="subjectProcess" ColumnName="subjectProcess" />
+                <ScalarProperty Name="statusNode" ColumnName="statusNode" />
+                <ScalarProperty Name="workflowName" ColumnName="workflowName" />
+                <ScalarProperty Name="loc" ColumnName="loc" />
+                <ScalarProperty Name="pic" ColumnName="pic" />
+                <ScalarProperty Name="startProcess" ColumnName="startProcess" />
+                <ScalarProperty Name="dueProcess" ColumnName="dueProcess" />
+                <ScalarProperty Name="cycleProcess" ColumnName="cycleProcess" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="key" ColumnName="key" />
+                <ScalarProperty Name="wm" ColumnName="wm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_Table">
+            <EntityTypeMapping TypeName="DB_WorkflowModel.User_Table">
+              <MappingFragment StoreEntitySet="User_Table">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Workflow_Table">
+            <EntityTypeMapping TypeName="DB_WorkflowModel.Workflow_Table">
+              <MappingFragment StoreEntitySet="Workflow_Table">
+                <ScalarProperty Name="workflow_id" ColumnName="workflow_id" />
+                <ScalarProperty Name="workflow_name" ColumnName="workflow_name" />
+                <ScalarProperty Name="workflow_subject" ColumnName="workflow_subject" />
+                <ScalarProperty Name="workflow_pic" ColumnName="workflow_pic" />
+                <ScalarProperty Name="workflow_wm" ColumnName="workflow_wm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

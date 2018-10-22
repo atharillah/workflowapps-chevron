@@ -1,0 +1,58 @@
+﻿@{
+    Layout = Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<body id=myBody onload="modalWindow()">
+    <div id="sample">
+        <div class="contentWork">
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Set a Workflow Name</p>
+                    <div>
+                        <input id="wfName" type="text" name="workflowName" placeholder="Workflow Name" />
+                        <button id="doneBtn">Done</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="containerLabel">
+                <label class="wfHeader">Workflow Application</label>
+
+                <img class="chevronLogo" src="../../Resources/Images/LogoChevron.png" />
+
+                <label id="wfLabel" class="wfLabel"> Workflow Name</label>
+            </div>
+
+            <button class="button3" onclick="myDiagram.commandHandler.selectAll()">Select All</button>
+            <button class="button3" onclick="myDiagram.commandHandler.undo()">Undo</button>
+            <button class="button3" onclick="myDiagram.commandHandler.redo()">Redo</button>
+
+            <!-- Pop Modal Button -->
+            <button id="wfBtn" class="button2"><font class="myFont">Create a new Workflow</font></button>
+
+            <div id="myBox">
+                <div id="myPaletteDiv"></div>
+                <div id="myDiagramDiv"></div>
+            </div>
+
+            <button class="buttonSave button2Save" onclick="save()"><font class="myFont">Save Workflow</font></button>
+
+            @*<button id="SaveButton" onclick="save()">Save</button>
+                <button onclick="load()">Load</button>*@
+
+            <textarea id="mySavedModel" style="display:none">
+                      { " class": "go.GraphLinksModel" ,
+                      "linkFromPortIdProperty" : "fromPort" ,
+                      "linkToPortIdProperty" : "toPort" ,
+                      "nodeDataArray" : [
+                      ],
+                      "linkDataArray" : [
+                      ]}
+            </textarea>
+            @*<button onclick="makeSVG()">Render as SVG</button>
+                <div id="SVGArea"></div>*@
+        </div>
+    </div>
+</body>

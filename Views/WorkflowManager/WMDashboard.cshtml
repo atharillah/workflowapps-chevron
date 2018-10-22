@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = Layout = "~/Views/Shared/_WMLayout.cshtml";
+}
+<body id=myBody>
+
+    <label class="wfHeader">Workflow Template</label>
+    <img class="chevronLogo" src="../../Resources/Images/LogoChevron.png" />
+
+    <div id="contentWork">
+        @(Html.Kendo().Grid<WorkFlowAppsChevron.Models.Workflow_Table>()
+                                            .Name("grid")
+                                            .Columns(columns =>
+                                            {
+                                                columns.Bound(p => p.workflow_name).Width(100).Title("Workflow Name");
+                                                columns.Command(command => command.Custom("Use").Click("showDetails")).Width(40);
+                                            })
+                                            .Selectable()
+                                            .Pageable()
+                                            .Sortable()
+                                            .Scrollable()
+                                            .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+                                            .HtmlAttributes(new
+                                            {
+                                                style
+                                = "height:50%; width:50%;  margin-left:4px; font-size:14px;"
+                                            })
+                                            .DataSource(dataSource => dataSource
+                                                .Ajax()
+                                                .Model(model => model.Id(p => p.workflow_name))
+                                                .PageSize(20)
+                                                .ServerOperation(true)
+                                                .Read(read => read.Action("Workflow_Data", "WorkflowManager"))
+                                                )
+        )
+        <script type="text/javascript">
+            function showDetails() {
+                var grid = $("#grid").data("kendoGrid");
+                var selectedRow = grid.select();
+                var selectedDataItem = grid.dataItem(selectedRow).workflow_name;
+                var contentUrl = '@Url.Action("WMWorkflow", "WorkflowManager")?workflowName=' + selectedDataItem;
+                window.location = contentUrl;
+            }
+        </script>
+    </div>
+</body>

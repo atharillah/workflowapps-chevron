@@ -1,0 +1,37 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/kendo")
+    <script src="http://kendo.cdn.telerik.com/<kendo ui version>/js/kendo.all.min.js"></script>
+    <script src="http://kendo.cdn.telerik.com/<kendo ui version>/js/kendo.aspnetmvc.min.js"></script>
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/<kendo ui version>/styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/<kendo ui version>/styles/kendo.default.min.css" />
+
+    <link rel="stylesheet" href="../../Content/admin/adminWorkflow.css" />
+    <script src="../../Scripts/admin/adminWorkflow.js"></script>
+    <script src="../../gojs/release/go.js"></script>
+
+    <meta name="viewport" content="width=device-width" />
+    <link href="../Content/_Layout.css" rel="stylesheet" />
+    <title>Admin Workflow Application</title>
+</head>
+<body>
+    <div id="sidebar">
+        <div class="welcome">
+            WELCOME<br>
+            ADMINISTRATOR
+        </div>
+        <div id="menu-sidebar">
+            @Html.ActionLink("HOME", "AdminDashboard", "Admin", null, new { @class = "buttonSide button-homeSide" })
+            @Html.ActionLink("WORKFLOW", "AdminWorkflow", "Admin", null, new { @class = "buttonSide button-workflowSide" })
+            @Html.ActionLink("USER", "AdminUser", "Admin", null, new { @class = "buttonSide button-userSide" })
+            @Html.ActionLink("SIGN OUT", "LoginPage", "Login", null, new { @class = "buttonSide button-signoutSide" })
+        </div>
+    </div>
+    @RenderBody()
+</body>
+</html>

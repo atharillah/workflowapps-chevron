@@ -1,0 +1,51 @@
+﻿@model WorkFlowAppsChevron.Models.User_Table
+@{
+    Layout = null;
+
+}
+
+<head>
+    <!--<meta name="viewport" content="width=device-width" /> -->
+    <title>_LoginScreen</title>
+    <link href="~/Content/Login.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/Scripts/Login/app.js"></script>
+    <script type="text/javascript" src="~/Scripts/Login/particles.js"></script>
+    
+</head>
+<html>
+
+<body>
+    
+    <section class="intro">
+        <div class="outline">
+            <div class="inner">
+                <div class="Content">
+                    <img src="../Resources/Images/LogoChevron.png" width="30%" height="35%" padding-top: "35%">
+                    <h1><b>Workflow Application</b></h1>
+                    <div class="SignIn">
+                        @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+                        {
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    @Html.EditorFor(model => model.user_name)
+                                </td>
+                            </tr>
+                            <tr>
+                                @Html.ValidationMessageFor(model => model.user_name)
+                            </tr>
+                            <input type="submit" name="" value="Sign In">
+
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</body>
+</html>
+

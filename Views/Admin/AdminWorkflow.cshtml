@@ -1,0 +1,38 @@
+﻿@{
+    Layout = Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<body id=myBody>
+    <label class="wfHeader"> Workflow List</label>
+    <img class="chevronLogo2" src="../../Resources/Images/LogoChevron.png" />
+    <div id="contentWork">
+        @(Html.Kendo().Grid<WorkFlowAppsChevron.Models.NodeDataArray_Table>()
+                                .Name("grid")
+                                .Columns(columns =>
+                                {
+                                    columns.Bound(p => p.workflowName).Width(100).Title("Workflow Name");
+                                    columns.Bound(p => p.processName).Width(225).Title("Process Name");
+                                    columns.Bound(p => p.cycleProcess).Width(225).Title("Cycle Time");
+                                    columns.Command(command => { command.Edit(); command.Destroy(); }).Width(120);
+                                })
+                                .Editable(editable => editable.Mode(GridEditMode.InLine).ConfirmDelete("test").DisplayDeleteConfirmation("Test"))
+                                .Pageable()
+                                .Sortable()
+                                .Scrollable()
+                                .Filterable(ftb => ftb.Mode(GridFilterMode.Row))
+                                .HtmlAttributes(new
+                                {
+                                    style
+                                = "height:515px; width:100%;  margin-left:4px; font-size:14px;"
+                                })
+                                .DataSource(dataSource => dataSource
+                                    .Ajax()
+                                    .Model(model => model.Id(p => p.id))
+                                    .PageSize(20)
+                                    .ServerOperation(true)
+                                    .Read(read => read.Action("Workflow_Data", "Admin"))
+                                    .Update(update => update.Action("EditingInline_Update", "Admin"))
+                                    .Destroy(update => update.Action("EditingInline_Destroy", "Admin"))
+                                 )
+        )
+    </div>
+</body>
